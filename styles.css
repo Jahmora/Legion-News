@@ -16,14 +16,14 @@ body, html {
 .container {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh; /* Assurer que le conteneur prenne au moins la hauteur de la fenêtre */
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   font-family: Arial, sans-serif;
-  background: url('photo_2024-11-02_16-04-59.jpg') no-repeat center center; /* Pas de cover */
-  background-size: contain; /* Permet de garder l'image entière sans redimensionner */
+  background: url('photo_2024-11-02_16-04-59.jpg') no-repeat center center; 
+  background-size: contain; /* Garder l'image entière */
   overflow: hidden;
 }
 
@@ -33,7 +33,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Ajouter un léger effet sombre */
+  background: rgba(0, 0, 0, 0.1); /* Diminuer l'opacité à 0.3 pour plus de transparence */
   z-index: 1;
 }
 
@@ -110,3 +110,4 @@ body, html {
     height: 30vh;
   }
 }
+
