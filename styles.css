@@ -22,7 +22,8 @@ body, html {
   align-items: center;
   color: white;
   font-family: Arial, sans-serif;
-  background: url('photo_2024-11-02_16-04-59.jpg') no-repeat center center/cover;
+  background: url('photo_2024-11-02_16-04-59.jpg') no-repeat center center; /* Pas de cover */
+  background-size: contain; /* Permet de garder l'image entière sans redimensionner */
   overflow: hidden;
 }
 
