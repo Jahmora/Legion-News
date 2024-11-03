@@ -22,6 +22,9 @@ console.log("L'image a été ajoutée au conteneur.");
 // Crée un élément pour afficher un message d'erreur
 const errorMessage = document.querySelector('.error-message'); // Sélectionne le message d'erreur
 
+// Variable pour l'image WebP
+let webpImage; // Déclaration de la variable webpImage
+
 // Vérifie si l'image se charge correctement
 image.onload = function() {
     console.log("L'image s'est chargée avec succès :", image.src);
@@ -42,10 +45,10 @@ image.onload = function() {
         const webpUrl = URL.createObjectURL(blob); // Crée une URL pour le blob
 
         // Crée une nouvelle image pour l'image WebP
-        const webpImage = new Image();
+        webpImage = new Image(); // Assigner à la variable définie à l'extérieur
         webpImage.src = webpUrl; // Attribue l'URL de l'image WebP
         webpImage.alt = 'Image convertie au format WebP';
-        webpImage.className = 'magazine-image'; // Assurez-vous d'ajouter la classe CSS ici
+        webpImage.className = 'magazine-image'; // Ajoutez la classe CSS ici
         imageContainer.appendChild(webpImage); // Ajoute l'image WebP au conteneur
 
         // Utilisation de GSAP pour l'animation de l'image WebP
