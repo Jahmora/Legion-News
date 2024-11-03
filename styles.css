@@ -13,6 +13,7 @@
   max-width: 100%; /* L'image ne déborde pas de l'écran */
   height: auto; /* Maintient les proportions de l'image */
   display: block; /* Assure que l'image est affichée comme un bloc */
+  object-fit: contain; /* S'assure que l'image est contenue sans être tronquée */
 }
 
 /* Styles pour le message d'erreur */
@@ -26,14 +27,8 @@
 
 /* Styles pour les options d'achat */
 .purchase-options {
-  position: absolute; /* Positionnement absolu pour se superposer à l'image */
-  top: 10%; /* Ajustez la position verticale selon vos besoins */
-  left: 70%; /* Ajustez la position horizontale selon vos besoins */
-  z-index: 10; /* Assure que la section d'achat soit au-dessus de l'image */
-  background-color: rgba(255, 255, 255, 0.8); /* Fond semi-transparent pour la lisibilité */
-  padding: 20px; /* Espacement intérieur */
-  border-radius: 8px; /* Coins arrondis */
   text-align: center; /* Centre le texte */
+  margin-left: 20px; /* Ajoute un espacement à gauche */
   display: none; /* Masque la section par défaut */
 }
 
