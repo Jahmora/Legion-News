@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Future Visions Interactive</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Legion News Interactive</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script> <!-- GSAP pour les animations -->
+  <script src="https://cdn.rawgit.com/antimatter15/resize-image/master/src/libwebpjs.js"></script> <!-- Bibliothèque pour WebP -->
 </head>
 <body>
   <div class="container">
-    <div class="overlay"></div>
-    <div class="title">
-      FUTURE VISIONS
+    <div id="image-container" role="img" aria-label="Image d'un magazine interactif"></div>
+    <div id="purchase-options" class="purchase-options" aria-labelledby="purchase-options-title">
+      <h2 id="purchase-options-title">Options d'Achat</h2>
+      <p>Achetez cette image avec des crypto-monnaies.</p>
+      <button aria-label="Achetez maintenant">Achetez Maintenant</button>
     </div>
-    <div class="light-beam"></div>
-    <canvas id="particleCanvas"></canvas>
+    <div class="error-message"></div> <!-- Message d'erreur si l'image ne se charge pas -->
   </div>
-  <script src="script.js"></script>
+  <script src="script.js"></script> <!-- Lien vers le fichier JavaScript -->
 </body>
 </html>
