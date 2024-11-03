@@ -44,6 +44,13 @@ image.onload = function() {
     canvas.toBlob(function(blob) {
         const webpUrl = URL.createObjectURL(blob); // Crée une URL pour le blob
 
+        // Vérifie si le blob a été créé
+        if (blob) {
+            console.log("L'image a été convertie en WebP avec succès :", webpUrl);
+        } else {
+            console.error("Échec de la conversion de l'image en WebP.");
+        }
+
         // Crée une nouvelle image pour l'image WebP
         webpImage = new Image(); // Assigner à la variable définie à l'extérieur
         webpImage.src = webpUrl; // Attribue l'URL de l'image WebP
