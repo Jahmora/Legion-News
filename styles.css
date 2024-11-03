@@ -1,6 +1,5 @@
 /* Styles pour le conteneur principal */
 .container {
-  position: relative; /* Permet aux éléments enfants d'être positionnés relativement */
   display: flex; /* Utilise flexbox pour aligner les éléments sur une ligne */
   justify-content: center; /* Centre horizontalement */
   align-items: center; /* Centre verticalement */
@@ -12,16 +11,8 @@
 /* Styles pour l'image du magazine */
 .magazine-image {
   max-width: 100%; /* L'image ne déborde pas de l'écran */
-  max-height: 100%; /* Limite la hauteur de l'image pour qu'elle ne dépasse pas la hauteur du conteneur */
-  width: auto; /* Maintient les proportions de l'image */
   height: auto; /* Maintient les proportions de l'image */
-  object-fit: contain; /* S'assure que l'image est entièrement visible sans être recadrée */
-
-  /* Effet futuriste : initialisation pour l'animation */
-  transform: scale(0.8); /* L'image commence légèrement réduite */
-  opacity: 0; /* L'image commence totalement transparente */
-  
-  transition: transform 1s ease, opacity 1s ease; /* Transition pour l'échelle et l'opacité (utilisé avant GSAP) */
+  display: block; /* Assure que l'image est affichée comme un bloc */
 }
 
 /* Styles pour le message d'erreur */
@@ -35,15 +26,8 @@
 
 /* Styles pour les options d'achat */
 .purchase-options {
-  position: absolute; /* Positionne l'élément par rapport à son conteneur */
-  top: 20%; /* Ajuste la position verticale */
-  left: 10%; /* Ajuste la position horizontale */
-  background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent pour une meilleure visibilité */
-  padding: 10px; /* Espacement interne */
-  border-radius: 5px; /* Coins arrondis */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre pour donner un effet de profondeur */
-  z-index: 1; /* Assure que la section d'options est au-dessus de l'image */
   text-align: center; /* Centre le texte */
+  margin-left: 20px; /* Ajoute un espacement à gauche */
   display: none; /* Masque la section par défaut */
 }
 
