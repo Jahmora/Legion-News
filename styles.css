@@ -1,113 +1,60 @@
-/* Style global de la page */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
+/* Styles pour le conteneur principal */
 .container {
-  position: relative;
-  width: 100vw;
-  min-height: 100vh; /* Assurer que le conteneur prenne au moins la hauteur de la fenêtre */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-family: Arial, sans-serif;
-  background: url('photo_2024-11-02_16-04-59.jpg') no-repeat center center; 
-  background-size: contain; /* Garder l'image entière */
-  overflow: hidden;
+  position: relative; /* Permet aux éléments enfants d'être positionnés relativement */
+  display: flex; /* Utilise flexbox pour aligner les éléments sur une ligne */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  overflow: hidden; /* Masque tout débordement */
+  flex-wrap: wrap; /* Permet aux éléments de se réorganiser sur plusieurs lignes si nécessaire */
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1); /* Diminuer l'opacité à 0.3 pour plus de transparence */
-  z-index: 1;
+/* Styles pour l'image du magazine */
+.magazine-image {
+  max-width: 100%; /* L'image ne déborde pas de l'écran */
+  max-height: 100%; /* Limite la hauteur de l'image pour qu'elle ne dépasse pas la hauteur du conteneur */
+  width: auto; /* Maintient les proportions de l'image */
+  height: auto; /* Maintient les proportions de l'image */
+  object-fit: contain; /* S'assure que l'image est entièrement visible sans être recadrée */
+
+  /* Effet futuriste : initialisation pour l'animation */
+  transform: scale(0.8); /* L'image commence légèrement réduite */
+  opacity: 0; /* L'image commence totalement transparente */
+  
+  transition: transform 1s ease, opacity 1s ease; /* Transition pour l'échelle et l'opacité (utilisé avant GSAP) */
 }
 
-.title {
-  position: relative;
-  font-size: 4vw; /* Utilisation d'unités vw pour un redimensionnement automatique */
-  color: #ffffff;
-  text-align: center;
-  letter-spacing: 0.5rem;
-  animation: glow 1.5s ease-in-out infinite alternate;
-  z-index: 2;
+/* Styles pour le message d'erreur */
+.error-message {
+  color: red; /* Couleur du texte d'erreur */
+  font-size: 18px; /* Taille de la police */
+  margin-top: 20px; /* Espacement au-dessus du message */
+  text-align: center; /* Centre le texte */
+  display: none; /* Masque le message d'erreur par défaut */
 }
 
-/* Animation de "glow" pour le texte */
-@keyframes glow {
-  0% {
-    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
-  }
-  100% {
-    text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
-  }
+/* Styles pour les options d'achat */
+.purchase-options {
+  position: absolute; /* Positionne l'élément par rapport à son conteneur */
+  top: 20%; /* Ajuste la position verticale */
+  left: 10%; /* Ajuste la position horizontale */
+  background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent pour une meilleure visibilité */
+  padding: 10px; /* Espacement interne */
+  border-radius: 5px; /* Coins arrondis */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre pour donner un effet de profondeur */
+  z-index: 1; /* Assure que la section d'options est au-dessus de l'image */
+  text-align: center; /* Centre le texte */
+  display: none; /* Masque la section par défaut */
 }
 
-.light-beam {
-  position: absolute;
-  width: 0.3vw; /* Utilisation de vw pour un redimensionnement automatique */
-  height: 20vh; /* Utilisation de vh pour que le faisceau s'adapte à la hauteur */
-  background: linear-gradient(to bottom, #00ffff, transparent);
-  top: 50%;
-  left: 55%;
-  transform: translate(-50%, -50%) rotate(30deg);
-  animation: beam-glow 2s infinite alternate ease-in-out;
-  z-index: 2;
-}
-
-/* Animation pour le faisceau lumineux */
-@keyframes beam-glow {
-  0% {
-    transform: translate(-50%, -50%) rotate(30deg) scale(1);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(30deg) scale(1.5);
-  }
-}
-
-/* Style pour le canevas des particules */
-#particleCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-/* Requêtes de media pour les petits écrans */
+/* Responsivité : styles pour les petits écrans */
 @media (max-width: 768px) {
-  .title {
-    font-size: 6vw; /* Texte légèrement plus grand pour la lisibilité sur petits écrans */
+  .container {
+    flex-direction: column; /* Colonne pour les petits écrans */
   }
-  .light-beam {
-    width: 0.5vw;
-    height: 25vh;
+
+  .purchase-options {
+    margin-left: 0; /* Retire la marge à gauche */
+    margin-top: 20px; /* Ajoute un espacement au-dessus de la section d'options d'achat */
   }
 }
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 8vw; /* Agrandissement du texte pour les très petits écrans */
-    letter-spacing: 0.3rem;
-  }
-  .light-beam {
-    width: 1vw;
-    height: 30vh;
-  }
-}
-
