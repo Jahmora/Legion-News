@@ -11,7 +11,7 @@ if (imageContainer) {
 // Crée un élément image
 const image = new Image(); // Crée un nouvel élément d'image
 image.crossOrigin = 'anonymous'; // CORS activé pour le chargement d'images externes
-image.src = 'https://jahmora.github.io/Legion-News/image1.png'; // Remplace par le chemin réel de ton image
+image.src = 'image1.png'; // Remplace par le chemin réel de ton image
 image.alt = 'Description de l\'image'; // Donne une description de l'image pour l'accessibilité
 image.className = 'magazine-image'; // Ajoute une classe pour le style
 
