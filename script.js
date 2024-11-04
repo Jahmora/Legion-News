@@ -77,13 +77,20 @@ image.onload = function() {
 
 // Fonction pour afficher les options d'achat
 function showPurchaseOptions() {
-    console.log("Options d'achat affichées.");
-    const purchaseOptions = document.getElementById('purchase-options');
-    purchaseOptions.style.display = 'block';
+  console.log("Options d'achat affichées.");
+  const purchaseOptions = document.getElementById('purchase-options');
 
-    // Déplace légèrement l'image vers la gauche
-    gsap.to(webpImage, { x: -50, duration: 0.5, ease: "power2.out" });
+  // Vérifiez si l'élément existe avant d'appliquer le style
+  if (purchaseOptions) {
+      purchaseOptions.classList.add('visible'); // Ajoute la classe pour rendre visible
+  } else {
+      console.error("L'élément des options d'achat n'a pas été trouvé.");
+  }
+
+  // Déplace légèrement l'image vers la gauche
+  gsap.to(webpImage, { x: -50, duration: 0.5, ease: "power2.out" });
 }
+
 
 // Gestion des erreurs de chargement d'image
 image.onerror = function() {
