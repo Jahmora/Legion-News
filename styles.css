@@ -1,45 +1,64 @@
 /* Styles pour le conteneur principal */
 .container {
-  display: flex; /* Utilise flexbox pour aligner les éléments sur une ligne */
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  height: 100vh; /* Prend toute la hauteur de la fenêtre */
-  overflow: hidden; /* Masque tout débordement */
-  flex-wrap: wrap; /* Permet aux éléments de se réorganiser sur plusieurs lignes si nécessaire */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 
 /* Styles pour l'image du magazine */
 .magazine-image {
-  max-width: 100%; /* L'image ne déborde pas de l'écran */
-  height: auto; /* Maintient les proportions de l'image */
-  display: block; /* Assure que l'image est affichée comme un bloc */
-  object-fit: contain; /* S'assure que l'image est contenue sans être tronquée */
+  max-width: 100%;
+  max-height: 100vh; /* Limite la hauteur à celle de la fenêtre */
+  height: auto;
+  display: block;
+  object-fit: contain; /* Maintient les proportions sans découpage */
 }
 
 /* Styles pour le message d'erreur */
 .error-message {
-  color: red; /* Couleur du texte d'erreur */
-  font-size: 18px; /* Taille de la police */
-  margin-top: 20px; /* Espacement au-dessus du message */
-  text-align: center; /* Centre le texte */
-  display: none; /* Masque le message d'erreur par défaut */
+  color: red;
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+  display: none;
 }
 
 /* Styles pour les options d'achat */
 .purchase-options {
-  text-align: center; /* Centre le texte */
-  margin-left: 20px; /* Ajoute un espacement à gauche */
-  display: none; /* Masque la section par défaut */
+  text-align: center;
+  margin-left: 20px;
+  display: none;
+  max-width: 300px; /* Limite la largeur pour les grands écrans */
+}
+
+/* Styles visibles pour les options d'achat */
+.purchase-options.visible {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* Responsivité : styles pour les petits écrans */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column; /* Colonne pour les petits écrans */
+    flex-direction: column;
+    padding: 10px;
   }
 
   .purchase-options {
-    margin-left: 0; /* Retire la marge à gauche */
-    margin-top: 20px; /* Ajoute un espacement au-dessus de la section d'options d'achat */
+    margin-left: 0;
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Ajustement supplémentaire pour l'image sur mobile */
+  .magazine-image {
+    width: 90%; /* S'assure que l'image est bien centrée */
+    max-width: 90%;
+    max-height: 80vh; /* Limite encore plus la hauteur sur mobile pour laisser de l'espace pour le texte */
   }
 }
