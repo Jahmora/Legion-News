@@ -5,7 +5,7 @@
   align-items: center;
   height: 100vh;
   overflow: hidden;
-  flex-wrap: wrap;
+  position: relative; /* Position relative pour le conteneur */
 }
 
 /* Styles pour l'image du magazine */
@@ -23,42 +23,46 @@
   font-size: 18px;
   margin-top: 20px;
   text-align: center;
-  display: none;
+  display: none; /* Caché par défaut */
 }
 
 /* Styles pour les options d'achat */
 .purchase-options {
+  position: absolute; /* Position absolue pour superposer sur l'image */
+  top: 50%; /* Centre verticalement */
+  left: 50%; /* Centre horizontalement */
+  transform: translate(-50%, -50%); /* Ajuste pour centrer parfaitement */
   text-align: center;
-  margin-left: 20px;
-  display: none;
+  display: none; /* Caché par défaut */
   max-width: 300px; /* Limite la largeur pour les grands écrans */
+  background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+  color: white; /* Couleur du texte */
+  padding: 20px; /* Espace intérieur */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre pour donner un effet de profondeur */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animation d'apparition */
+  opacity: 0; /* Commence caché */
 }
 
 /* Styles visibles pour les options d'achat */
 .purchase-options.visible {
   display: block;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  opacity: 1; /* Rend visible */
+  transform: translate(-50%, -50%) scale(1.05); /* Animation d'agrandissement */
 }
 
 /* Responsivité : styles pour les petits écrans */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
     padding: 10px;
   }
 
   .purchase-options {
-    margin-left: 0;
-    margin-top: 20px;
-    width: 100%;
-    padding: 10px;
+    width: 90%; /* S'assure que la boîte est bien visible sur mobile */
   }
 
   /* Ajustement supplémentaire pour l'image sur mobile */
   .magazine-image {
-    width: 90%; /* S'assure que l'image est bien centrée */
-    max-width: 90%;
-    max-height: 80vh; /* Limite encore plus la hauteur sur mobile pour laisser de l'espace pour le texte */
+    max-height: 70vh; /* Limite la hauteur sur mobile pour laisser de l'espace pour le texte */
   }
 }
