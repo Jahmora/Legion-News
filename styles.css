@@ -28,27 +28,33 @@
 
 /* Styles pour les options d'achat */
 .purchase-options {
-  position: absolute; /* Position absolue pour superposer sur l'image */
-  top: 50%; /* Centre verticalement */
-  left: 50%; /* Centre horizontalement */
-  transform: translate(-50%, -50%); /* Ajuste pour centrer parfaitement */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9); /* Légère réduction initiale */
   text-align: center;
-  display: none; /* Caché par défaut */
-  max-width: 300px; /* Limite la largeur pour les grands écrans */
-  background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
-  color: white; /* Couleur du texte */
-  padding: 20px; /* Espace intérieur */
-  border-radius: 10px; /* Coins arrondis */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre pour donner un effet de profondeur */
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animation d'apparition */
-  opacity: 0; /* Commence caché */
+  display: none;
+  max-width: 300px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Styles visibles pour les options d'achat */
+/* Apparence de la boîte d'achat avec zoom initial */
 .purchase-options.visible {
   display: block;
-  opacity: 1; /* Rend visible */
-  transform: translate(-50%, -50%) scale(1.05); /* Animation d'agrandissement */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1); /* Agrandit légèrement */
+}
+
+/* Effet de zoom et ombre au survol */
+.purchase-options:hover {
+  transform: translate(-50%, -50%) scale(1.05); /* Zoom au survol */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8); /* Ombre plus intense */
 }
 
 /* Responsivité : styles pour les petits écrans */
