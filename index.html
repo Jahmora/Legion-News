@@ -15,8 +15,14 @@
     <div id="purchase-options" class="purchase-options" aria-labelledby="purchase-options-title">
       <h2 id="purchase-options-title">Options d'Achat</h2>
       <p>Achetez cette image avec des crypto-monnaies.</p>
-      <button aria-label="Achetez maintenant">Achetez Maintenant</button>
+      <button id="buyButton" aria-label="Achetez maintenant">Achetez Maintenant</button>
     </div>
+    
+    <!-- Sélecteur de langue -->
+    <select id="languageSelect" aria-label="Sélectionner la langue">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+    </select>
     
     <!-- Message d'erreur pour le chargement de l'image -->
     <div class="error-message"></div>
