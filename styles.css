@@ -72,3 +72,22 @@
     max-height: 70vh; /* Limite la hauteur sur mobile pour laisser de l'espace pour le texte */
   }
 }
+
+/* Badge de version */
+.version-badge {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.version-badge:hover {
+  opacity: 1; /* Rend le badge plus visible au survol */
+}
+
+.version-badge img {
+  height: 24px;
+  border-radius: 5px;
+}
