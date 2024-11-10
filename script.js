@@ -1,92 +1,85 @@
-// Traductions pour chaque langue
-const translations = {
-  fr: {
-    purchaseTitle: "Options d'Achat",
-    description: "Achetez cette image avec des crypto-monnaies.",
-    buyButton: "Achetez Maintenant",
-    errorMessage: "Une erreur est survenue lors du chargement de l'image."
-  },
-  en: {
-    purchaseTitle: "Purchase Options",
-    description: "Buy this image with cryptocurrency.",
-    buyButton: "Buy Now",
-    errorMessage: "An error occurred while loading the image."
-  }
-};
-
-// Fonction pour définir la langue et mettre à jour les textes
+// Initialisation des éléments de l'interface
 function setLanguage(lang) {
-  console.log(`[Langue] Passage à la langue: ${lang}`);
-  
+  console.log(`[Langue] Passage à la langue : ${lang}`);
+
+  // Titre des options d'achat
   const purchaseTitle = document.getElementById('purchase-options-title');
   if (purchaseTitle) {
-      purchaseTitle.textContent = translations[lang].purchaseTitle;
+    purchaseTitle.textContent = translations[lang].purchaseTitle;
+    console.log("[Langue] Titre des options d'achat mis à jour.");
   } else {
-      console.error("[Erreur] Élément 'purchase-options-title' introuvable.");
+    console.error("[Erreur] Élément 'purchase-options-title' introuvable.");
   }
 
+  // Description des options d'achat
   const description = document.querySelector('.purchase-options p');
   if (description) {
-      description.textContent = translations[lang].description;
+    description.textContent = translations[lang].description;
+    console.log("[Langue] Description des options d'achat mise à jour.");
   } else {
-      console.error("[Erreur] Élément 'description' introuvable.");
+    console.error("[Erreur] Élément 'description' introuvable.");
   }
 
+  // Bouton d'achat
   const buyButton = document.getElementById('buyButton');
   if (buyButton) {
-      buyButton.textContent = translations[lang].buyButton;
+    buyButton.textContent = translations[lang].buyButton;
+    console.log("[Langue] Texte du bouton d'achat mis à jour.");
   } else {
-      console.error("[Erreur] Élément 'buyButton' introuvable.");
+    console.error("[Erreur] Élément 'buyButton' introuvable.");
   }
 
+  // Message d'erreur
   const errorMessage = document.querySelector('.error-message');
   if (errorMessage) {
-      errorMessage.textContent = translations[lang].errorMessage;
+    errorMessage.textContent = translations[lang].errorMessage;
+    console.log("[Langue] Message d'erreur mis à jour.");
   } else {
-      console.error("[Erreur] Élément 'error-message' introuvable.");
+    console.error("[Erreur] Élément 'error-message' introuvable.");
   }
 
+  // Sauvegarde de la langue préférée
   localStorage.setItem('preferredLanguage', lang);
+  console.log("[Langue] Langue préférée sauvegardée dans localStorage.");
 }
 
-// Fonction pour appliquer automatiquement la langue selon le navigateur
+// Détection et application automatique de la langue
 function detectAndSetLanguage() {
   const browserLanguage = navigator.language || navigator.userLanguage;
   const selectedLang = browserLanguage.startsWith('fr') ? 'fr' : 'en';
-  
+  console.log(`[Langue] Langue détectée : ${selectedLang} d'après le navigateur.`);
   setLanguage(selectedLang);
-  console.log(`[Langue] Langue détectée : ${selectedLang} (d'après le navigateur)`);
 }
 
-// Fonction d'initialisation
+// Initialisation de la page
 function init() {
-  console.log("[Initialisation] Début de l'initialisation...");
-  
+  console.log("[Initialisation] Démarrage de l'initialisation...");
+
   const imageContainer = document.getElementById('image-container');
   if (imageContainer) {
-      console.log("[Image] Conteneur trouvé.");
-      loadImage(imageContainer);
+    console.log("[Image] Conteneur d'image trouvé.");
+    loadImage(imageContainer);
   } else {
-      console.error("[Erreur] Conteneur d'image introuvable.");
+    console.error("[Erreur] Conteneur d'image introuvable.");
   }
 
-  detectAndSetLanguage(); // Détecter et appliquer la langue
+  detectAndSetLanguage();
 }
 
-// Fonction pour charger et convertir l'image en WebP
+// Chargement et conversion de l'image
 function loadImage(imageContainer) {
   const image = new Image();
   image.crossOrigin = 'anonymous';
-  image.src = 'https://jahmora.github.io/Legion-News/image1.png'; // À remplacer par un URL WebP si nécessaire
-  image.alt = 'Description de l\'image';
+  image.src = 'https://jahmora.github.io/Legion-News/image1.png';
+  image.alt = "Description de l'image";
   image.className = 'magazine-image';
   imageContainer.appendChild(image);
   console.log("[Image] Image ajoutée au conteneur.");
 
   image.onload = () => {
-    // Vérification du format de l'image
     if (image.src.endsWith('.webp')) {
-      displayWebPImage(image.src, imageContainer); // Si déjà WebP, on l'affiche directement
+      displayWebPImage(image.src, imageContainer);
+      console.log("[Image] Image WebP chargée et affichée.");
     } else {
       convertToWebP(image, imageContainer);
     }
@@ -94,7 +87,7 @@ function loadImage(imageContainer) {
   image.onerror = handleImageError;
 }
 
-// Fonction de conversion en WebP
+// Conversion de l'image en WebP
 function convertToWebP(image, imageContainer) {
   console.log("[Conversion] Début de la conversion en WebP...");
   const screenWidth = window.innerWidth;
@@ -110,16 +103,16 @@ function convertToWebP(image, imageContainer) {
 
   canvas.toBlob(blob => {
     if (blob) {
-        const webpUrl = URL.createObjectURL(blob);
-        displayWebPImage(webpUrl, imageContainer);
-        console.log("[Conversion] Image convertie avec succès en WebP.");
+      const webpUrl = URL.createObjectURL(blob);
+      displayWebPImage(webpUrl, imageContainer);
+      console.log("[Conversion] Image convertie avec succès en WebP.");
     } else {
-        console.error("[Conversion] Échec de la conversion en WebP.");
+      console.error("[Conversion] Échec de la conversion en WebP.");
     }
   }, 'image/webp');
 }
 
-// Affiche l'image WebP et applique les animations
+// Affichage de l'image WebP avec animation
 function displayWebPImage(webpUrl, imageContainer) {
   const webpImage = new Image();
   webpImage.src = webpUrl;
@@ -128,7 +121,7 @@ function displayWebPImage(webpUrl, imageContainer) {
   webpImage.style.width = '100%';
   webpImage.style.height = 'auto';
 
-  imageContainer.innerHTML = ''; // Vide le conteneur avant d'ajouter l'image
+  imageContainer.innerHTML = '';
   imageContainer.appendChild(webpImage);
 
   gsap.to(webpImage, {
@@ -136,6 +129,7 @@ function displayWebPImage(webpUrl, imageContainer) {
     duration: 1,
     onComplete: () => {
       document.getElementById('purchase-options').classList.add('visible');
+      console.log("[Animation] Image affichée avec animation. Options d'achat visibles.");
     }
   });
 }
@@ -143,21 +137,24 @@ function displayWebPImage(webpUrl, imageContainer) {
 // Gestion des erreurs de chargement de l'image
 function handleImageError() {
   const lang = localStorage.getItem('preferredLanguage') || 'en';
-  console.error("[Image] Erreur lors du chargement de l'image.");
-  document.querySelector('.error-message').textContent = translations[lang].errorMessage;
-  document.querySelector('.error-message').style.display = 'block';
+  console.error("[Erreur] Chargement de l'image échoué.");
+  const errorMessage = document.querySelector('.error-message');
+  errorMessage.textContent = translations[lang].errorMessage;
+  errorMessage.style.display = 'block';
 
-  // Remplacer l'image par une image de secours
   const imageContainer = document.getElementById('image-container');
   const fallbackImage = new Image();
-  fallbackImage.src = 'fallback-image.png'; // Image par défaut
-  fallbackImage.alt = 'Image par défaut';
+  fallbackImage.src = 'fallback-image.png';
+  fallbackImage.alt = 'Image de remplacement';
   imageContainer.appendChild(fallbackImage);
+  console.log("[Erreur] Image de remplacement ajoutée.");
 }
 
 // Écouteur pour le changement de langue
 document.getElementById('languageSelect').addEventListener('change', (event) => {
-  setLanguage(event.target.value);
+  const selectedLanguage = event.target.value;
+  console.log(`[Langue] Changement manuel vers : ${selectedLanguage}`);
+  setLanguage(selectedLanguage);
 });
 
 // Initialisation du script au chargement de la page
