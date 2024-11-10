@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Découvrez Legion News Interactive, une expérience immersive autour de magazines interactifs et d'achats en crypto-monnaie.">
-  <title>Legion News Interactive</title>
+  <title id="page-title">Legion News Interactive</title>
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,13 +16,13 @@
     <!-- Section pour afficher les options d'achat -->
     <div id="purchase-options" class="purchase-options" aria-labelledby="purchase-options-title">
       <h2 id="purchase-options-title">Options d'Achat</h2>
-      <p>Achetez cette image avec des crypto-monnaies.</p>
+      <p id="purchase-description">Achetez cette image avec des crypto-monnaies.</p>
       <button id="buyButton" aria-label="Achetez maintenant" aria-describedby="purchase-options-title" tabindex="0">Achetez Maintenant</button>
     </div>
     
     <!-- Sélecteur de langue avec label accessible -->
     <div class="language-selector">
-      <label for="languageSelect">Langue :</label>
+      <label for="languageSelect" id="language-label">Langue :</label>
       <select id="languageSelect" aria-label="Sélectionner la langue">
         <option value="fr">Français</option>
         <option value="en">English</option>
@@ -30,7 +30,7 @@
     </div>
     
     <!-- Message d'erreur pour le chargement de l'image -->
-    <div class="error-message" role="alert" aria-live="polite"></div>
+    <div class="error-message" id="error-message" role="alert" aria-live="polite"></div>
   </div>
 
   <!-- Badge de version dans le coin inférieur droit -->
@@ -40,7 +40,8 @@
   
   <!-- Lien vers GSAP pour les animations, chargé de manière asynchrone -->
   <script async src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <!-- Lien vers le fichier JavaScript -->
+  <!-- Lien vers le fichier de traduction et le fichier JavaScript principal -->
+  <script src="translations.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
